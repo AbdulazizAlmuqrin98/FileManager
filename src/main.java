@@ -5,8 +5,10 @@ import java.util.Scanner;
 public class main {
 	//Main Method////////////////////////////////////
 	public static void main(String[] args) {
+
 		
 System.out.println("		Welcome to FileManager \nThe program are made by Abdulaziz Ahmed Almuqrin \n GitHub: https://github.com/AbdulazizAlmuqrin98");
+
 	String op = getInput("Choose the function :"+"\n1- Add a File" +"\n2- Delete a File"+ "\n3- Search for a File "+"\n4- Retrieving the file names in an ascending order");
 	  
     int opInt = Integer.parseInt(op);
@@ -14,7 +16,8 @@ System.out.println("		Welcome to FileManager \nThe program are made by Abdulaziz
     switch (opInt) {
     case 1:
     	System.out.println("----Add a File----");
-    ///	addAfile();
+    
+    	 addAfile(op, op);
     	
     	
     	
@@ -76,12 +79,13 @@ System.out.println("		Welcome to FileManager \nThe program are made by Abdulaziz
 		    	    System.out.println("Enter File Name");
 
 		    	    String FileName = Sc.nextLine();  // Read user input
-		      File myObj = new File(FileName);
+		      File myObj = new File("D:\\CoOp\\JavaProject\\Phase1\\FileManager\\Files\\"+FileName);
 		      if (myObj.createNewFile()) {
 		        System.out.println("File created: " + myObj.getName());
 		      } else {
 		        System.out.println("File already exists.");
 		      }
+		      
 		    } catch (IOException e) {
 		      System.out.println("An error occurred.");
 		      e.printStackTrace();
@@ -91,4 +95,12 @@ System.out.println("		Welcome to FileManager \nThe program are made by Abdulaziz
 		
 	}
 	//////////////End addAfile method
+	
+	
+	
+	///DeleteFile method
+	
+		
+
+	
 }
