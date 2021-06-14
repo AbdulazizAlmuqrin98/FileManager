@@ -26,7 +26,7 @@ System.out.println("		Welcome to FileManager \nThe program are made by Abdulaziz
     case 2 :
     	
     	System.out.println("----Delete a File----");
-
+    	DeleteFile(op,op);
     	
     	
     	   break;
@@ -100,7 +100,23 @@ System.out.println("		Welcome to FileManager \nThe program are made by Abdulaziz
 	
 	///DeleteFile method
 	
+	public static void DeleteFile(String s1, String s2) {
+
 		
+   	 Scanner Sc = new Scanner(System.in);  // Create a Scanner object
+   	    System.out.println("Enter File Name");
+
+   	    String FileName = Sc.nextLine();  // Read user input
+     File myObj = new File("D:\\CoOp\\JavaProject\\Phase1\\FileManager\\Files\\"+FileName);
+     if (myObj.delete()) { 
+         System.out.println("Deleted the file: " + myObj.getName());
+       } else {
+         System.out.println("Failed to delete the file.");
+       } 
+      
+  
+}
+	////////////End DeleteFile method
 
 	
 }
