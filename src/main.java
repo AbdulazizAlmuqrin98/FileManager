@@ -3,10 +3,12 @@ import java.util.Scanner;
 
 
 public class main {
+	 String names[];
+	    int length;
 	public static void run() {
 		System.out.println("		Welcome to FileManager \nThe program are made by Abdulaziz Ahmed Almuqrin \n GitHub: https://github.com/AbdulazizAlmuqrin98");
 
-	String op = getInput("Choose the function :"+"\n1- Add a File" +"\n2- Delete a File"+ "\n3- Search for a File "+"\n4- Retrieving the file names in an ascending order");
+	String op = getInput("Choose the function :"+"\n1- Add a File" +"\n2- Delete a File"+ "\n3- Search for a File "+"\n4- Retrieving the file names in an ascending order"+"\n5- End Program");
 	  
     int opInt = Integer.parseInt(op);
 	///Main menu
@@ -56,6 +58,8 @@ public class main {
     	System.out.println("1-Show all file in Directory");
     	System.out.println("2-Search for a file in the Directory");
     	System.out.println("3-Go back to menu");
+    	System.out.println("4-End");
+
     	int i= Sc.nextInt();
     		if(i==1) {
     	    	System.out.println("	Show all file in Directory");
@@ -70,13 +74,18 @@ public class main {
     			 
     		
     		}
-    		else {	    	System.out.println("Go back to menu");
+    		else if(i==3) {	    	System.out.println("Go back to menu");
 			flag=3;
+			
 			run();
 	    	break;
 
     			}
-    }while(flag !=3 || flag !=2 || flag !=1);
+    		else if (i==4){System.out.println("Program End");    	 System.exit(0);
+    		
+    		flag=4;}
+    		
+    }while(flag !=3 || flag !=2 || flag !=1 || flag !=4 );
 		
 		
     	
@@ -84,13 +93,31 @@ public class main {
     	 
     case 4:
     	System.out.println("----file names in an ascending order----");
+    	main sorter = new main();
+    	 File directory = new File("D:\\CoOp\\JavaProject\\Phase1\\FileManager\\Files");
+
+			String[] flist =directory.list();
+			 for (String i : flist) {
+		            System.out.print(i);
+		            System.out.print("\n");
+		        }
+			 String Q = getInput("1- Go back \n2- End");
+	    	 int QInt = Integer.parseInt(Q);
+	    	 if(QInt==1) {
+	    		 System.out.println("Go back to menu");
+	    		 run();
+	    		 
+	    	 }
+	    	 else {	System.out.println("Program End");    	 System.exit(0);}
 
     	
     	 break;
     	 
     	 
-    	     	 
-    	 
+    case 5:  
+    	System.out.println("Program End");    	 System.exit(0); 	 
+   	 break;
+
     default:
         System.out.println("You Entered an incorrect value");
         return;}
@@ -221,7 +248,48 @@ public class main {
 				System.out.println("File Not Found");
 			}
 			
+	    }////////////findFile End
+	  //sort method
+	  void sort(String array[]) {
+	        if (array == null || array.length == 0) {
+	            return;
+	        }
+	        this.names = array;
+	        this.length = array.length;
+	        quickSort(0, length - 1);
 	    }
+	  void quickSort(int lowerIndex, int higherIndex) {
+	        int i = lowerIndex;
+	        int j = higherIndex;
+	        String pivot = this.names[lowerIndex + (higherIndex - lowerIndex) / 2];
 
+	        while (i <= j) {
+	            while (this.names[i].compareToIgnoreCase(pivot) < 0) {
+	                i++;
+	            }
+
+	            while (this.names[j].compareToIgnoreCase(pivot) > 0) {
+	                j--;
+	            }
+
+	            if (i <= j) {
+	                exchangeNames(i, j);
+	                i++;
+	                j--;
+	            }
+	        }
+	        //call quickSort recursively
+	        if (lowerIndex < j) {
+	            quickSort(lowerIndex, j);
+	        }
+	        if (i < higherIndex) {
+	            quickSort(i, higherIndex);
+	        }
+	    }
+	  void exchangeNames(int i, int j) {
+	        String temp = this.names[i];
+	        this.names[i] = this.names[j];
+	        this.names[j] = temp;
+	    }
 	
 }
