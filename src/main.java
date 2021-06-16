@@ -3,11 +3,8 @@ import java.util.Scanner;
 
 
 public class main {
-	//Main Method////////////////////////////////////
-	public static void main(String[] args) {
-
-		
-System.out.println("		Welcome to FileManager \nThe program are made by Abdulaziz Ahmed Almuqrin \n GitHub: https://github.com/AbdulazizAlmuqrin98");
+	public static void run() {
+		System.out.println("		Welcome to FileManager \nThe program are made by Abdulaziz Ahmed Almuqrin \n GitHub: https://github.com/AbdulazizAlmuqrin98");
 
 	String op = getInput("Choose the function :"+"\n1- Add a File" +"\n2- Delete a File"+ "\n3- Search for a File "+"\n4- Retrieving the file names in an ascending order");
 	  
@@ -18,7 +15,15 @@ System.out.println("		Welcome to FileManager \nThe program are made by Abdulaziz
     	System.out.println("----Add a File----");
     
     	 addAfile(op, op);
-    	
+    	 String added = getInput("1- Go back \n2- End");
+    	 int addedInt = Integer.parseInt(added);
+    	 if(addedInt==1) {
+    		 System.out.println("Go back to menu");
+    		 run();
+    		 
+    	 }
+    	 else {	System.out.println("Program End");    	 System.exit(0);}
+
     	
     	
     	 break;
@@ -28,7 +33,15 @@ System.out.println("		Welcome to FileManager \nThe program are made by Abdulaziz
     	System.out.println("----Delete a File----");
     	DeleteFile(op,op);
     	
-    	
+    	 String Del = getInput("1- Go back \n2- End");
+    	 int DelInt = Integer.parseInt(Del);
+    	 if(DelInt==1) {
+    		 System.out.println("Go back to menu");
+    		 run();
+    		 
+    	 }
+    	 else {	System.out.println("Program End");    	 System.exit(0);}
+
     	   break;
            
     case 3:
@@ -49,6 +62,12 @@ System.out.println("		Welcome to FileManager \nThe program are made by Abdulaziz
     default:
         System.out.println("You Entered an incorrect value");
         return;}
+    }
+	//Main Method////////////////////////////////////
+	public static void main(String[] args) {
+		run();
+		
+
     
 	}
 	//End ofMain Method///////////////////////////////
@@ -117,6 +136,7 @@ System.out.println("		Welcome to FileManager \nThe program are made by Abdulaziz
   
 }
 	////////////End DeleteFile method
+	
 
 	
 }
