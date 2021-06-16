@@ -46,7 +46,39 @@ public class main {
            
     case 3:
     	System.out.println("----Search for a File----");
+    	//search
+		int flag=0;
+		do {
+   
+    Scanner Sc = new Scanner(System.in); 
+    	System.out.println("----Search----");
+    	System.out.println("Choose :");
+    	System.out.println("1-Show all file in Directory");
+    	System.out.println("2-Search for a file in the Directory");
+    	System.out.println("3-Go back to menu");
+    	int i= Sc.nextInt();
+    		if(i==1) {
+    	    	System.out.println("	Show all file in Directory");
 
+    			SearchInDirectory(op,op);
+    			
+    			
+    			flag=1;
+    		}
+    		else if (i==2) {
+    			findFile(op,op);
+    			 
+    		
+    		}
+    		else {	    	System.out.println("Go back to menu");
+			flag=3;
+			run();
+	    	break;
+
+    			}
+    }while(flag !=3 || flag !=2 || flag !=1);
+		
+		
     	
     	 break;
     	 
@@ -137,6 +169,59 @@ public class main {
 }
 	////////////End DeleteFile method
 	
+	  //searchInDirectory/////
+	  public static void SearchInDirectory(String s1, String s2) {  
+	
+		 System.out.print("In Directory: \n");
+		  File directory = new File("D:\\CoOp\\JavaProject\\Phase1\\FileManager\\Files");
+
+			String[] flist =directory.list();
+			int flag = 0;
+			if (flist == null) {
+				System.out.println("Empty directory.");
+			}
+			else {
+			for (File f: directory.listFiles()) {
+				flist = directory.list();
+				 System.out.println(f.getName());
+				 flag = 1;
+			}
+		
+			if (flag == 0) {
+				System.out.println("File Not Found");
+			}
+	  }}
+	 /// findFile
+	  public static void findFile(String name,String fn)
+	    {
+		  File directory = new File("D:\\CoOp\\JavaProject\\Phase1\\FileManager\\Files");
+			String[] flist = directory.list();
+			int flag = 0;
+			if (flist == null) {
+				System.out.println("Empty directory.");
+			}
+			else {
+
+				// Linear search in the array
+				  System.out.println("Enter File Name");
+				  Scanner Sc = new Scanner(System.in);  // Create a Scanner object
+				  String File_Name = Sc.nextLine(); 
+				for (int i = 0; i < flist.length; i++) {
+					String filename = flist[i];
+					 
+			    	     // Read user input 
+					if (filename.equalsIgnoreCase(File_Name)) {
+						System.out.println(filename + " found");
+						flag = 1;
+					}
+				}
+			}
+
+			if (flag == 0) {
+				System.out.println("File Not Found");
+			}
+			
+	    }
 
 	
 }
